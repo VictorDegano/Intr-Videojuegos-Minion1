@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Platform.gd" type="Script" id=1]
+[ext_resource path="res://assets/PNG/Environment/ground_grass_small.png" type="Texture" id=2]
+
+[node name="Platform" type="Node2D"]
+position = Vector2( 74.5036, 671.158 )
+script = ExtResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+scale = Vector2( 0.612334, 0.341111 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -47.6732, 13.3973, -60.6145, -5.33356, -60.9551, -12.1448, -56.5278, -16.5721, 54.4953, -16.5721, 61.6471, -11.8043, 61.6471, -6.01471, 46.6624, 16.4624, 43.2568, 17.8246 )
+one_way_collision = true
