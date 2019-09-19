@@ -1,13 +1,15 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/DoodleKinematicBody.gd" type="Script" id=1]
 [ext_resource path="res://assets/PNG/Players/bunny1_stand.png" type="Texture" id=2]
 [ext_resource path="res://assets/PNG/Background/bg_layer1.png" type="Texture" id=3]
 [ext_resource path="res://assets/PNG/Particles/smoke.png" type="Texture" id=4]
-[ext_resource path="res://Scenes/DoodleCamera.gd" type="Script" id=5]
-[ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/Fonts/Coaster Quake - Personal Use.otf" type="DynamicFontData" id=7]
-[ext_resource path="res://Scenes/ScoreLabel.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Fonts/Coaster Quake - Personal Use.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://Scenes/ScoreLabel.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/DoodleCamera.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/MovingPlatform.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/BreakablePlatform.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.6145, 50.1857 )
@@ -17,7 +19,7 @@ size = 64
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-font_data = ExtResource( 7 )
+font_data = ExtResource( 6 )
 
 [node name="Doodle Jump" type="Node"]
 __meta__ = {
@@ -34,6 +36,7 @@ WALK_SPEED = 150
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoodleKinematicBody"]
 shape = SubResource( 1 )
+one_way_collision = true
 
 [node name="DoodleSprite" type="Sprite" parent="DoodleKinematicBody"]
 scale = Vector2( 0.5, 0.5 )
@@ -45,19 +48,23 @@ scale = Vector2( 6.50306, 10.0503 )
 rect = Rect2( 0, 0, 10, 10 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+editor/display_folded = true
 
 [node name="BackgorundLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 editor/display_folded = true
+position = Vector2( 275, 350 )
+motion_mirroring = Vector2( 0, 1 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/BackgorundLayer"]
-position = Vector2( 276.329, 343.037 )
-scale = Vector2( 552.902, 715.021 )
+position = Vector2( 3.8147e-005, 204.931 )
+scale = Vector2( 550.526, 1732.48 )
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 1.2, 1.5 )
+region_rect = Rect2( 0, 0, 1, 1 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 editor/display_folded = true
+visible = false
 position = Vector2( 78.5279, 84.3882 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
@@ -65,63 +72,51 @@ position = Vector2( 22.8551, -2.34412 )
 scale = Vector2( 1.89628, 0.902328 )
 texture = ExtResource( 4 )
 
-[node name="DoodleCamera" type="Camera2D" parent="ParallaxBackground"]
-position = Vector2( 275, 700 )
-z_as_relative = false
-current = true
-limit_left = 0
-limit_right = 550
-limit_bottom = 700
-editor_draw_limits = true
-editor_draw_drag_margin = true
-script = ExtResource( 5 )
-player_path = NodePath("../../DoodleKinematicBody")
+[node name="Platform" parent="." instance=ExtResource( 5 )]
 
-[node name="Platform" parent="." instance=ExtResource( 6 )]
-
-[node name="Platform9" parent="." instance=ExtResource( 6 )]
+[node name="Platform9" parent="." instance=ExtResource( 5 )]
 position = Vector2( 439.786, 520.967 )
 
-[node name="Platform6" parent="." instance=ExtResource( 6 )]
+[node name="Platform6" parent="." instance=ExtResource( 5 )]
 position = Vector2( 423.364, 372.396 )
 
-[node name="Platform11" parent="." instance=ExtResource( 6 )]
+[node name="Platform11" parent="." instance=ExtResource( 5 )]
 position = Vector2( 442.747, 56.6942 )
 
-[node name="Platform3" parent="." instance=ExtResource( 6 )]
+[node name="Platform3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 261.12, 593.811 )
 
-[node name="Platform10" parent="." instance=ExtResource( 6 )]
+[node name="Platform10" parent="." instance=ExtResource( 5 )]
 position = Vector2( 479.488, 194.424 )
 
-[node name="Platform7" parent="." instance=ExtResource( 6 )]
+[node name="Platform7" parent="." instance=ExtResource( 5 )]
 position = Vector2( 306.536, 287.447 )
 
-[node name="Platform12" parent="." instance=ExtResource( 6 )]
+[node name="Platform12" parent="." instance=ExtResource( 5 )]
 position = Vector2( 407.479, -85.9045 )
 
-[node name="Platform2" parent="." instance=ExtResource( 6 )]
+[node name="Platform2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 125.395, 496.516 )
 
-[node name="Platform13" parent="." instance=ExtResource( 6 )]
+[node name="Platform13" parent="." instance=ExtResource( 5 )]
 position = Vector2( 124.322, 95.2693 )
 
-[node name="Platform5" parent="." instance=ExtResource( 6 )]
+[node name="Platform5" parent="." instance=ExtResource( 5 )]
 position = Vector2( 123.964, 370.502 )
 
-[node name="Platform14" parent="." instance=ExtResource( 6 )]
+[node name="Platform14" parent="." instance=ExtResource( 5 )]
 position = Vector2( 297.7, 4.58917 )
 
-[node name="Platform4" parent="." instance=ExtResource( 6 )]
-position = Vector2( 272.759, 440.061 )
+[node name="Platform4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 381.945, 443.762 )
 
-[node name="Platform15" parent="." instance=ExtResource( 6 )]
+[node name="Platform15" parent="." instance=ExtResource( 5 )]
 position = Vector2( 299.581, 161.553 )
 
-[node name="Platform8" parent="." instance=ExtResource( 6 )]
+[node name="Platform8" parent="." instance=ExtResource( 5 )]
 position = Vector2( 136.721, 252.473 )
 
-[node name="Platform16" parent="." instance=ExtResource( 6 )]
+[node name="Platform16" parent="." instance=ExtResource( 5 )]
 position = Vector2( 104.033, -46.4916 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -130,9 +125,28 @@ position = Vector2( 104.033, -46.4916 )
 margin_left = 8.0
 margin_top = 3.0
 margin_right = 221.0
-margin_bottom = 42.0
+margin_bottom = 44.0
 custom_fonts/font = SubResource( 2 )
 text = "Score: "
+script = ExtResource( 7 )
+
+[node name="DoodleCamera" type="Camera2D" parent="."]
+position = Vector2( 275, 700 )
+z_as_relative = false
+current = true
+limit_left = 0
+limit_right = 550
+limit_bottom = 700
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+editor_draw_limits = true
+editor_draw_drag_margin = true
 script = ExtResource( 8 )
+player_path = NodePath("../DoodleKinematicBody")
+
+[node name="MovingPlatform" parent="." instance=ExtResource( 9 )]
+position = Vector2( 61.0294, 554.517 )
+
+[node name="BreakablePlatform" parent="." instance=ExtResource( 10 )]
+position = Vector2( 277.27, 500.431 )
 [connection signal="screen_exited" from="DoodleKinematicBody/VisibilityNotifier2D" to="DoodleKinematicBody" method="_on_screen_exited"]
-[connection signal="screen_exited" from="DoodleKinematicBody/VisibilityNotifier2D" to="Platform" method="_on_screen_exited"]

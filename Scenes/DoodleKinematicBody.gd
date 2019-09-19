@@ -28,8 +28,8 @@ func _process(delta):
 func _physics_process(delta):
 	move_and_slide(velocity, Vector2.UP)
 
-#Se llama cuando cae fuera de la camara
+#Se llama cuando cae fuera de la camara(Aka sale de la pantalla)
 func _on_screen_exited():
+	print("¡GAME OVER!")
 	hide()
 #	queue_free() #Faltaria una señal de game over para indicar a la camara que no lo siga.
-	print("¡GAME OVER!")

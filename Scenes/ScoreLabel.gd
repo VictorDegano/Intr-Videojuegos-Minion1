@@ -20,10 +20,12 @@ func _process(delta):
 		text =  TEXT_PATTERN % actualScore
 
 func _on_update_score(scoreToUpdate, playerPositionY):
+	var roundedPlayerPosY = ceil(playerPositionY)
+	
 	if firstJump:
-		lastPlayerDistance = playerPositionY + 1
+		lastPlayerDistance = roundedPlayerPosY + 1
 		firstJump = false
-
-	if lastPlayerDistance > playerPositionY:
-		lastPlayerDistance = playerPositionY
+	
+	if lastPlayerDistance > roundedPlayerPosY:
+		lastPlayerDistance = roundedPlayerPosY
 		newScore += scoreToUpdate

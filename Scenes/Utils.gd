@@ -7,7 +7,7 @@ const PLAYER_MARGIN = 30
 #chequea que el objeto no se pase del margen lateral, y si sucede lo tranca al limite del margen.
 static func checkLimit(object, rectangleViewPort):
 	if object.global_position.x < 0+PLAYER_MARGIN:
-		object.global_position.x = PLAYER_MARGIN
+		object.global_position.x = PLAYER_MARGIN # Se podria usar la funcion clamp
 	if object.global_position.x > rectangleViewPort.size.x-PLAYER_MARGIN:
 		object.global_position.x = rectangleViewPort.size.x-PLAYER_MARGIN
 
