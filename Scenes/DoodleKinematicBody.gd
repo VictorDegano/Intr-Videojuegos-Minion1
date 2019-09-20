@@ -22,7 +22,7 @@ func _process(delta):
 		velocity.x = WALK_SPEED
 	else: # ¿Valdria la pena chequear si ya no es 0 x para no recalcular siempre?
 		velocity.x = max(0, abs(velocity.x)-FRICTION) * sign(velocity.x)
-
+		
 	Utils.checkLimit(self,get_viewport_rect())
 	
 func _physics_process(delta):
@@ -32,4 +32,4 @@ func _physics_process(delta):
 func _on_screen_exited():
 	print("¡GAME OVER!")
 	hide()
-#	queue_free() #Faltaria una señal de game over para indicar a la camara que no lo siga.
+	pause_mode = true

@@ -27,6 +27,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Event="*res://Scenes/Event.gd"
+Utils="*res://Scenes/Utils.gd"
 
 [display]
 

@@ -2,16 +2,9 @@ extends KinematicBody2D
 
 const PLATFORM_MARGIN = 63
 export(int) var SPEED = 3000.0
-#var startXPosition = 0
 var velocity = Vector2()
 var direction = Vector2.ZERO
 var signDirection = 1
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-#	startXPosition = get_viewport_rect().size.x * randf()
-	# Se puede revisar si la posicion inicia en parte a alguna mitad del viewport y hacer que se mueva al otro lado
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -28,3 +21,9 @@ func _process(delta):
 
 func _physics_process(delta):
 	move_and_slide(velocity, direction)
+
+func _on_screen_exited():
+	print("FREE")
+	$CollisionPolygon2D.disabled = true
+	queue_free()
+	hide()

@@ -13,10 +13,8 @@ func _ready():
 	Event.connect("update_score", self,"_on_update_score")
 
 func _process(delta):
-#
 	if actualScore < newScore:
 		actualScore += 10 # se podria usar un Min para asegurar el q el actual sea igual al new score.
-#		actualScore = lerp(actualScore, newScore, 0.17) # Solo prueba
 		text =  TEXT_PATTERN % actualScore
 
 func _on_update_score(scoreToUpdate, playerPositionY):

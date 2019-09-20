@@ -18,3 +18,7 @@ texture = ExtResource( 2 )
 polygon = PoolVector2Array( -61.0455, -15.1463, -61.0455, -15.1463, 59.8303, -14.9525, 63.7046, -13.984, 66.4165, -11.0783, 66.4165, -4.68584, 66.4165, -4.68584, 66.4165, -4.68584, 56.9247, 10.4236, 54.6001, 11.5859, -54.653, 15.0727, -54.653, 15.0727, -57.1713, 14.2979, -66.4694, -4.49213, -66.4694, -4.49213, -66.2757, -10.3035, -65.6946, -12.8217, -65.6946, -12.8217 )
 one_way_collision = true
 one_way_collision_margin = 0.0
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="StaticBody2D"]
+scale = Vector2( 6.69809, 1.51334 )
+[connection signal="screen_exited" from="StaticBody2D/VisibilityNotifier2D" to="StaticBody2D" method="_on_screen_exited"]

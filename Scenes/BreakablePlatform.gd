@@ -1,13 +1,13 @@
-extends Node2D
+extends KinematicBody2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+func _on_Area2D_body_entered(body):
+	if body.is_on_floor():
+		yield(get_tree().create_timer(0.05), "timeout")
+		hide()
+		queue_free()
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-#	if(physicState.get_contact_count() >= 1):
-#		hide()
-#		queue_free()
+func _on_screen_exited():
+	print("FREE")
+	$CollisionPolygon2D.disabled = true
+	queue_free()
+	hide()

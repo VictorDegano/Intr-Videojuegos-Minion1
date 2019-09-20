@@ -1,16 +1,9 @@
-extends Node2D
+extends StaticBody2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+onready var collision = $CollisionPolygon2D 
 
 func _on_screen_exited():
-	pass # Replace with function body.
+	print("FREE")
+	collision.disabled = true
+	get_parent().queue_free()
+	hide()
