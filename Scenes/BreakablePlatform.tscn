@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/BreakablePlatform.gd" type="Script" id=1]
 [ext_resource path="res://assets/PNG/Environment/ground_stone_broken.png" type="Texture" id=2]
+[ext_resource path="res://assets/Sounds/Breaking wall effect short.ogg" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 75.2382, 3.29343 )
@@ -28,5 +29,10 @@ one_way_collision = true
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="RigidBody2D"]
 scale = Vector2( 7.6324, 1.7559 )
+
+[node name="AudioBreaking" type="AudioStreamPlayer2D" parent="RigidBody2D"]
+stream = ExtResource( 3 )
+pitch_scale = 0.9
+bus = "SoundEffects"
 [connection signal="body_entered" from="RigidBody2D/Area2D" to="RigidBody2D" method="_on_Area2D_body_entered"]
 [connection signal="screen_exited" from="RigidBody2D/VisibilityNotifier2D" to="RigidBody2D" method="_on_screen_exited"]

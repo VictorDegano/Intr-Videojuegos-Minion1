@@ -12,7 +12,9 @@ func _process(delta):
 	if is_on_floor():
 		if Input.is_action_just_pressed("ui_up"):
 			velocity.y = -JUMP_FORCE
+			$AudioJump.play()
 			Event.emit_signal("update_score", JUMP_FORCE, position.y)
+			
 	else:
 		velocity.y += delta * GRAVITY
 

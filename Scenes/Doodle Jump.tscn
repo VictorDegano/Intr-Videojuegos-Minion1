@@ -1,16 +1,17 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/DoodleKinematicBody.gd" type="Script" id=1]
 [ext_resource path="res://assets/PNG/Players/bunny1_stand.png" type="Texture" id=2]
-[ext_resource path="res://assets/PNG/Background/bg_layer1.png" type="Texture" id=3]
-[ext_resource path="res://assets/PNG/Particles/smoke.png" type="Texture" id=4]
-[ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/Fonts/Coaster Quake - Personal Use.otf" type="DynamicFontData" id=6]
-[ext_resource path="res://Scenes/ScoreLabel.gd" type="Script" id=7]
-[ext_resource path="res://Scenes/DoodleCamera.gd" type="Script" id=8]
-[ext_resource path="res://Scenes/MovingPlatform.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/BreakablePlatform.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/MovingPlatform2.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/Sounds/172205__leszek-szary__jumping.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/PNG/Background/bg_layer1.png" type="Texture" id=4]
+[ext_resource path="res://assets/PNG/Particles/smoke.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/Fonts/Coaster Quake - Personal Use.otf" type="DynamicFontData" id=7]
+[ext_resource path="res://Scenes/ScoreLabel.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/DoodleCamera.gd" type="Script" id=9]
+[ext_resource path="res://Scenes/MovingPlatform.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/BreakablePlatform.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/MovingPlatform2.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.6145, 50.1857 )
@@ -20,7 +21,7 @@ size = 64
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-font_data = ExtResource( 6 )
+font_data = ExtResource( 7 )
 
 [node name="Doodle Jump" type="Node"]
 __meta__ = {
@@ -47,6 +48,11 @@ position = Vector2( -32.4264, -50.2151 )
 scale = Vector2( 6.50306, 10.0503 )
 rect = Rect2( 0, 0, 10, 10 )
 
+[node name="AudioJump" type="AudioStreamPlayer" parent="DoodleKinematicBody"]
+stream = ExtResource( 3 )
+volume_db = -20.0
+mix_target = 2
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="BackgorundLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -56,7 +62,7 @@ motion_mirroring = Vector2( 0, 1 )
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/BackgorundLayer"]
 position = Vector2( 3.8147e-005, 204.931 )
 scale = Vector2( 550.526, 1732.48 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1, 1 )
 
@@ -68,53 +74,53 @@ position = Vector2( 78.5279, 84.3882 )
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 22.8551, -2.34412 )
 scale = Vector2( 1.89628, 0.902328 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
-[node name="Platform" parent="." instance=ExtResource( 5 )]
+[node name="Platform" parent="." instance=ExtResource( 6 )]
 
-[node name="Platform9" parent="." instance=ExtResource( 5 )]
+[node name="Platform9" parent="." instance=ExtResource( 6 )]
 position = Vector2( 441.944, 652.634 )
 
-[node name="Platform6" parent="." instance=ExtResource( 5 )]
+[node name="Platform6" parent="." instance=ExtResource( 6 )]
 position = Vector2( 460.058, -93.8335 )
 
-[node name="Platform11" parent="." instance=ExtResource( 5 )]
+[node name="Platform11" parent="." instance=ExtResource( 6 )]
 position = Vector2( 295.971, -189.371 )
 
-[node name="Platform3" parent="." instance=ExtResource( 5 )]
+[node name="Platform3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 276.229, 382.281 )
 
-[node name="Platform10" parent="." instance=ExtResource( 5 )]
+[node name="Platform10" parent="." instance=ExtResource( 6 )]
 position = Vector2( 149.242, -243.745 )
 
-[node name="Platform7" parent="." instance=ExtResource( 5 )]
+[node name="Platform7" parent="." instance=ExtResource( 6 )]
 position = Vector2( 470.58, 177.365 )
 
-[node name="Platform12" parent="." instance=ExtResource( 5 )]
+[node name="Platform12" parent="." instance=ExtResource( 6 )]
 position = Vector2( 284.446, -44.8936 )
 
-[node name="Platform2" parent="." instance=ExtResource( 5 )]
+[node name="Platform2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 75.7502, 479.248 )
 
-[node name="Platform13" parent="." instance=ExtResource( 5 )]
+[node name="Platform13" parent="." instance=ExtResource( 6 )]
 position = Vector2( 150.224, 34.8321 )
 
-[node name="Platform5" parent="." instance=ExtResource( 5 )]
+[node name="Platform5" parent="." instance=ExtResource( 6 )]
 position = Vector2( 104.538, 303.589 )
 
-[node name="Platform14" parent="." instance=ExtResource( 5 )]
+[node name="Platform14" parent="." instance=ExtResource( 6 )]
 position = Vector2( 407.782, 30.4908 )
 
-[node name="Platform4" parent="." instance=ExtResource( 5 )]
+[node name="Platform4" parent="." instance=ExtResource( 6 )]
 position = Vector2( 461.809, 314.254 )
 
-[node name="Platform15" parent="." instance=ExtResource( 5 )]
+[node name="Platform15" parent="." instance=ExtResource( 6 )]
 position = Vector2( 299.581, 139.968 )
 
-[node name="Platform8" parent="." instance=ExtResource( 5 )]
+[node name="Platform8" parent="." instance=ExtResource( 6 )]
 position = Vector2( 108.661, 157.5 )
 
-[node name="Platform16" parent="." instance=ExtResource( 5 )]
+[node name="Platform16" parent="." instance=ExtResource( 6 )]
 position = Vector2( 114.825, -102.612 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -126,7 +132,7 @@ margin_right = 221.0
 margin_bottom = 44.0
 custom_fonts/font = SubResource( 2 )
 text = "Score: "
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
 [node name="DoodleCamera" type="Camera2D" parent="."]
 position = Vector2( 275, 700 )
@@ -140,15 +146,15 @@ drag_margin_v_enabled = false
 drag_margin_bottom = 0.0
 editor_draw_limits = true
 editor_draw_drag_margin = true
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 player_path = NodePath("../DoodleKinematicBody")
 
-[node name="MovingPlatform" parent="." instance=ExtResource( 9 )]
+[node name="MovingPlatform" parent="." instance=ExtResource( 10 )]
 position = Vector2( 443.079, 567.468 )
 
-[node name="BreakablePlatform" parent="." instance=ExtResource( 10 )]
+[node name="BreakablePlatform" parent="." instance=ExtResource( 11 )]
 position = Vector2( 411.095, 470.212 )
 
-[node name="Node2D" parent="." instance=ExtResource( 11 )]
+[node name="Node2D" parent="." instance=ExtResource( 12 )]
 position = Vector2( 35, 225.807 )
 [connection signal="screen_exited" from="DoodleKinematicBody/VisibilityNotifier2D" to="DoodleKinematicBody" method="_on_screen_exited"]
