@@ -14,7 +14,8 @@ func _process(delta):
 			velocity.y = -JUMP_FORCE
 			$AudioJump.play()
 			Event.emit_signal("update_score", JUMP_FORCE, position.y)
-			
+		else:
+			velocity.y = 0.5
 	else:
 		velocity.y += delta * GRAVITY
 
@@ -28,10 +29,11 @@ func _process(delta):
 	Utils.checkLimit(self,get_viewport_rect())
 	
 func _physics_process(delta):
+	#Se asiga el vetor velocidad resultado del move and slide para 
+	#evitar que quede seteado algun valor extraño
 	move_and_slide(velocity, Vector2.UP)
 
 #Se llama cuando cae fuera de la camara(Aka sale de la pantalla)
 func _on_screen_exited():
-	print("¡GAME OVER!")
+	Event.emit_signal("game_over")
 	hide()
-	pause_mode = true

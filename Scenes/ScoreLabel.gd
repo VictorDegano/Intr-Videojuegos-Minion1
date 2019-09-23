@@ -4,9 +4,9 @@ var lastPlayerDistance:int = 0
 var firstJump = true
 
 var actualScore:int = 0
-var newScore = actualScore
+var newScore:int = actualScore
 
-const TEXT_PATTERN = "SCORE: %d"
+const TEXT_PATTERN:String = "SCORE: %d"
 
 func _ready():
 	text = TEXT_PATTERN % 0
@@ -27,3 +27,9 @@ func _on_update_score(scoreToUpdate, playerPositionY):
 	if lastPlayerDistance > roundedPlayerPosY:
 		lastPlayerDistance = roundedPlayerPosY
 		newScore += scoreToUpdate
+
+func reset():
+	lastPlayerDistance = 0
+	firstJump = 0
+	actualScore = 0
+	newScore = actualScore
