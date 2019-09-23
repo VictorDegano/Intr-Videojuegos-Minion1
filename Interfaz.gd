@@ -27,7 +27,7 @@ func _on_timeout():
 	messageLabel.hide()
 
 func _on_button_pressed():
-	get_tree().set_pause(false)
+#	get_tree().set_pause(false)
 	messageLabel.hide()
 	startbutton.hide()
-	emit_signal("start_game")
+	Event.emit_signal("start_game")
