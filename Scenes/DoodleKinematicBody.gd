@@ -35,5 +35,9 @@ func _physics_process(delta):
 
 #Se llama cuando cae fuera de la camara(Aka sale de la pantalla)
 func _on_screen_exited():
+	$AudioFall.play()
+	yield(get_tree().create_timer(0.85), "timeout")
+	$AudioFallingHit.play()
+	yield(get_tree().create_timer(0.30), "timeout")
 	Event.emit_signal("game_over")
 	hide()

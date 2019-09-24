@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Cartoon Falling Impact 2.ogg-f5479ddc6bff99fd20b4f9fc6e776c77.oggstr"
+
+[deps]
+
+source_file="res://assets/Sounds/Cartoon Falling Impact 2.ogg"
+dest_files=[ "res://.import/Cartoon Falling Impact 2.ogg-f5479ddc6bff99fd20b4f9fc6e776c77.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
