@@ -1,10 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Interfaz.gd" type="Script" id=1]
 [ext_resource path="res://assets/Fonts/Doubledecker DEMO.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/PNG/Background/bg_layer1.png" type="Texture" id=3]
+[ext_resource path="res://assets/PNG/Particles/smoke.png" type="Texture" id=4]
+[ext_resource path="res://assets/PNG/Environment/grass2.png" type="Texture" id=5]
+[ext_resource path="res://assets/PNG/Environment/grass1.png" type="Texture" id=6]
+[ext_resource path="res://assets/PNG/Environment/cactus.png" type="Texture" id=7]
+[ext_resource path="res://assets/PNG/Environment/ground_grass.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -13,14 +21,17 @@ font_data = ExtResource( 2 )
 [node name="Interfaz" type="CanvasLayer"]
 pause_mode = 2
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ 550.499 ]
+}
 
 [node name="Mensajes" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -161.65
+margin_left = -150.0
 margin_top = 268.0
-margin_right = 144.35
-margin_bottom = 344.0
+margin_right = 150.0
+margin_bottom = 348.0
 custom_fonts/font = SubResource( 1 )
 text = "Bunny Jump"
 align = 1
@@ -31,10 +42,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -59.2547
-margin_top = 110.389
-margin_right = 87.7453
-margin_bottom = 160.389
+margin_left = -75.0
+margin_top = 110.0
+margin_right = 75.0
+margin_bottom = 160.0
 custom_fonts/font = SubResource( 2 )
 text = "Start"
 
@@ -43,10 +54,76 @@ wait_time = 2.0
 one_shot = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+editor/display_folded = true
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="BackgroundLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="SkySprite" type="Sprite" parent="ParallaxBackground/BackgroundLayer"]
+position = Vector2( 275.379, 350.093 )
+scale = Vector2( 0.271859, 0.342784 )
+texture = ExtResource( 3 )
 
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="CloudSmallSprite" type="Sprite" parent="ParallaxBackground/BackgroundLayer"]
+position = Vector2( -319.706, 170.885 )
+scale = Vector2( 1.64018, 1 )
+texture = ExtResource( 4 )
+offset = Vector2( 251.501, -62.4585 )
+
+[node name="CloudSmallSprite2" type="Sprite" parent="ParallaxBackground/BackgroundLayer"]
+position = Vector2( -49.3978, 378.066 )
+scale = Vector2( 1.64018, 1 )
+texture = ExtResource( 4 )
+offset = Vector2( 251.501, -62.4585 )
+
+[node name="CloudSmallSprite3" type="Sprite" parent="ParallaxBackground/BackgroundLayer"]
+position = Vector2( -112.416, 104.521 )
+scale = Vector2( 1.64018, 1 )
+texture = ExtResource( 4 )
+offset = Vector2( 251.501, -62.4585 )
+
+[node name="CloudSmallSprite4" type="Sprite" parent="ParallaxBackground/BackgroundLayer"]
+position = Vector2( 73.8462, 199.853 )
+scale = Vector2( 1.64018, 1 )
+texture = ExtResource( 4 )
+offset = Vector2( 251.501, -62.4585 )
+
+[node name="CloudLargeSprite" type="Sprite" parent="ParallaxBackground/BackgroundLayer"]
+position = Vector2( -722.037, 273.01 )
+scale = Vector2( 3.88081, 0.943317 )
+texture = ExtResource( 4 )
+offset = Vector2( 251.501, -62.4585 )
+
+[node name="CloudLargeSprite2" type="Sprite" parent="ParallaxBackground/BackgroundLayer"]
+position = Vector2( -929.772, 384.048 )
+scale = Vector2( 3.88081, 0.943317 )
+texture = ExtResource( 4 )
+offset = Vector2( 251.501, -62.4585 )
+
+[node name="CloudLargeSprite3" type="Sprite" parent="ParallaxBackground/BackgroundLayer"]
+position = Vector2( -471.471, 495.012 )
+scale = Vector2( 3.88081, 0.943317 )
+texture = ExtResource( 4 )
+offset = Vector2( 251.501, -62.4585 )
+
+[node name="GroundLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+editor/display_folded = true
+
+[node name="GrassSprite" type="Sprite" parent="ParallaxBackground/GroundLayer"]
+position = Vector2( 524.807, 612.347 )
+texture = ExtResource( 5 )
+
+[node name="GrassSprite2" type="Sprite" parent="ParallaxBackground/GroundLayer"]
+position = Vector2( 29.3673, 616.914 )
+texture = ExtResource( 6 )
+
+[node name="CactusSprite" type="Sprite" parent="ParallaxBackground/GroundLayer"]
+position = Vector2( 141.173, 570.292 )
+texture = ExtResource( 7 )
+
+[node name="FloorSprite" type="Sprite" parent="ParallaxBackground/GroundLayer"]
+position = Vector2( 275.109, 692.414 )
+scale = Vector2( 1.58757, 1 )
+texture = ExtResource( 8 )
+
+[node name="PlayerLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 [connection signal="timeout" from="Timer" to="." method="_on_timeout"]
