@@ -4,6 +4,7 @@ onready var messageLabel = $Mensajes
 onready var messageTimer = $Timer
 onready var startbutton = $Button
 onready var background = $ParallaxBackground
+onready var music = $MenuMusic
 var firstPlay = true
 
 func _ready():
@@ -35,6 +36,7 @@ func _on_button_pressed():
 	
 	if firstPlay:
 		background.free()
+		music.free()
 		firstPlay = false
 		
 	Event.emit_signal("start_game")

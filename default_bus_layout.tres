@@ -15,14 +15,14 @@ resource_name = "Amplify"
 [sub_resource type="AudioEffectHighPassFilter" id=5]
 resource_name = "HighPassFilter"
 
-[sub_resource type="AudioEffectPhaser" id=7]
+[sub_resource type="AudioEffectPhaser" id=6]
 resource_name = "Phaser"
 depth = 0.5
 
-[sub_resource type="AudioEffectLowShelfFilter" id=8]
+[sub_resource type="AudioEffectLowShelfFilter" id=7]
 resource_name = "LowShelfFilter"
 
-[sub_resource type="AudioEffectStereoEnhance" id=9]
+[sub_resource type="AudioEffectStereoEnhance" id=8]
 resource_name = "StereoEnhance"
 pan_pullout = 2.0
 
@@ -49,9 +49,9 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = -2.0
 bus/2/send = "Master"
-bus/2/effect/0/effect = SubResource( 7 )
+bus/2/effect/0/effect = SubResource( 6 )
 bus/2/effect/0/enabled = false
-bus/2/effect/1/effect = SubResource( 8 )
+bus/2/effect/1/effect = SubResource( 7 )
 bus/2/effect/1/enabled = true
-bus/2/effect/2/effect = SubResource( 9 )
+bus/2/effect/2/effect = SubResource( 8 )
 bus/2/effect/2/enabled = true

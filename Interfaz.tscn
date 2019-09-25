@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Interfaz.gd" type="Script" id=1]
 [ext_resource path="res://assets/Fonts/Doubledecker DEMO.otf" type="DynamicFontData" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/PNG/Environment/grass1.png" type="Texture" id=6]
 [ext_resource path="res://assets/PNG/Environment/cactus.png" type="Texture" id=7]
 [ext_resource path="res://assets/PNG/Environment/ground_grass.png" type="Texture" id=8]
+[ext_resource path="res://assets/Sounds/Menu Music.ogg" type="AudioStream" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -126,4 +127,9 @@ scale = Vector2( 1.58757, 1 )
 texture = ExtResource( 8 )
 
 [node name="PlayerLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -5.0
+autoplay = true
 [connection signal="timeout" from="Timer" to="." method="_on_timeout"]
