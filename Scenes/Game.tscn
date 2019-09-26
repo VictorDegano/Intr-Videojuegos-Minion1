@@ -1,142 +1,32 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/DoodleKinematicBody.gd" type="Script" id=2]
-[ext_resource path="res://assets/Spritesheets/Bunny Spritesheet.png" type="Texture" id=3]
-[ext_resource path="res://assets/Sounds/172205__leszek-szary__jumping.wav" type="AudioStream" id=4]
-[ext_resource path="res://assets/Sounds/Fall.ogg" type="AudioStream" id=5]
-[ext_resource path="res://assets/Sounds/Cartoon Falling Impact 2.ogg" type="AudioStream" id=6]
-[ext_resource path="res://assets/PNG/Background/bg_layer1.png" type="Texture" id=7]
-[ext_resource path="res://assets/PNG/Particles/smoke.png" type="Texture" id=8]
-[ext_resource path="res://Scenes/CloudSmallMovingSprite.gd" type="Script" id=9]
-[ext_resource path="res://Scenes/CloudLargeMoving.gd" type="Script" id=10]
-[ext_resource path="res://Scenes/SpringboardPowerUp.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=12]
-[ext_resource path="res://assets/Fonts/Coaster Quake - Personal Use.otf" type="DynamicFontData" id=13]
-[ext_resource path="res://Scenes/ScoreLabel.gd" type="Script" id=14]
-[ext_resource path="res://Scenes/DoodleCamera.gd" type="Script" id=15]
-[ext_resource path="res://Scenes/MovingPlatform.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Scenes/BreakablePlatform.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Scenes/MovingPlatform2.tscn" type="PackedScene" id=18]
-[ext_resource path="res://assets/Sounds/BackgroundMusic.ogg" type="AudioStream" id=19]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/PNG/Background/bg_layer1.png" type="Texture" id=3]
+[ext_resource path="res://assets/PNG/Particles/smoke.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/CloudSmallMovingSprite.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/CloudLargeMoving.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/SpringboardPowerUp.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/Fonts/Coaster Quake - Personal Use.otf" type="DynamicFontData" id=9]
+[ext_resource path="res://Scenes/ScoreLabel.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/DoodleCamera.gd" type="Script" id=11]
+[ext_resource path="res://Scenes/MovingPlatform.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/BreakablePlatform.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/MovingPlatform2.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/Sounds/BackgroundMusic.ogg" type="AudioStream" id=15]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 31.3137, 51.7599 )
-
-[sub_resource type="Animation" id=4]
-resource_name = "Idle"
-loop = true
-step = 0.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("DoodleSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 1.39698e-009, 0.0600804, 0.119243, 0.160979 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 4, 5, 5, 4 ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "Jump"
-tracks/0/type = "value"
-tracks/0/path = NodePath("DoodleSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.00045863, 0.0412766, 0.10044, 0.141258 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 4, 5, 5, 6 ]
-}
-
-[sub_resource type="Animation" id=6]
-resource_name = "Left Walk"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("DoodleSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( -0.000917256, 0.06, 0.11, 0.17 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 2, 3, 3, 2 ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "Right Walk"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("DoodleSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0600804, 0.107778, 0.169693 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 1, 0 ]
-}
-
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=6]
 size = 64
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-font_data = ExtResource( 13 )
+font_data = ExtResource( 9 )
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
 
-[node name="DoodleKinematicBody" type="KinematicBody2D" parent="."]
-position = Vector2( 74.9362, 574.209 )
-script = ExtResource( 2 )
-GRAVITY = 350
-JUMP_FORCE = 300
-WALK_SPEED = 150
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoodleKinematicBody"]
-shape = SubResource( 1 )
-one_way_collision = true
-
-[node name="DoodleSprite" type="Sprite" parent="DoodleKinematicBody"]
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 3 )
-vframes = 2
-hframes = 4
-frame = 4
-
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="DoodleKinematicBody"]
-position = Vector2( -31.3265, -51.7372 )
-scale = Vector2( 62.5823, 103.307 )
-rect = Rect2( 0, 0, 1, 1 )
-
-[node name="AudioJump" type="AudioStreamPlayer" parent="DoodleKinematicBody"]
-stream = ExtResource( 4 )
-volume_db = -20.0
-mix_target = 2
-
-[node name="AudioFall" type="AudioStreamPlayer" parent="DoodleKinematicBody"]
-stream = ExtResource( 5 )
-pitch_scale = 2.0
-
-[node name="AudioFallingHit" type="AudioStreamPlayer" parent="DoodleKinematicBody"]
-stream = ExtResource( 6 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DoodleKinematicBody"]
-anims/Idle = SubResource( 4 )
-anims/Jump = SubResource( 5 )
-"anims/Left Walk" = SubResource( 6 )
-"anims/Right Walk" = SubResource( 3 )
+[node name="DoodleKinematicBody" parent="." instance=ExtResource( 2 )]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -147,160 +37,173 @@ motion_mirroring = Vector2( 0, 1 )
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/BackgorundLayer"]
 position = Vector2( -0.715668, 204.215 )
 scale = Vector2( 550.526, 1732.48 )
-texture = ExtResource( 7 )
+texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1, 1 )
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 pause_mode = 1
-editor/display_folded = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
+pause_mode = 1
 editor/display_folded = true
 visible = false
 position = Vector2( 78.5279, 84.3882 )
 motion_mirroring = Vector2( 1, 1 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground2/ParallaxLayer"]
+visible = false
 position = Vector2( 149.592, 238.481 )
 scale = Vector2( 1.78747, 0.902328 )
-texture = ExtResource( 8 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 51, 48 )
 
 [node name="Sprite8" type="Sprite" parent="ParallaxBackground2/ParallaxLayer"]
+visible = false
 position = Vector2( 287.542, 364.691 )
 scale = Vector2( 1.78747, 0.902328 )
-texture = ExtResource( 8 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 51, 48 )
 
 [node name="Sprite9" type="Sprite" parent="ParallaxBackground2/ParallaxLayer"]
+visible = false
 position = Vector2( 448.973, 448.341 )
 scale = Vector2( 1.78747, 0.902328 )
-texture = ExtResource( 8 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 51, 48 )
 
 [node name="Sprite7" type="Sprite" parent="ParallaxBackground2/ParallaxLayer"]
+visible = false
 position = Vector2( 74.7467, 474.757 )
 scale = Vector2( 1.78747, 0.902328 )
-texture = ExtResource( 8 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 51.685, 48.5034 )
 
 [node name="Sprite4" type="Sprite" parent="ParallaxBackground2/ParallaxLayer"]
+visible = false
 position = Vector2( 371.926, 171.01 )
 scale = Vector2( 2.49822, 1.62846 )
-texture = ExtResource( 8 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 51, 48 )
 
 [node name="CloudSmallMovingSprite" type="Sprite" parent="ParallaxBackground2/ParallaxLayer"]
+editor/display_folded = true
+visible = false
 position = Vector2( 121.795, 570.236 )
 scale = Vector2( 1.78747, 1.33801 )
-texture = ExtResource( 8 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 51.1162, 47.3658 )
-script = ExtResource( 9 )
+script = ExtResource( 5 )
 
 [node name="Tween" type="Tween" parent="ParallaxBackground2/ParallaxLayer/CloudSmallMovingSprite"]
 repeat = true
 playback/repeat = true
 
 [node name="CloudLargeMovingSprite2" type="Sprite" parent="ParallaxBackground2/ParallaxLayer"]
+editor/display_folded = true
+visible = false
 position = Vector2( -27.3194, 8.40594 )
 scale = Vector2( 2.4975, 1.36629 )
-texture = ExtResource( 8 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 51.685, 46.797 )
-script = ExtResource( 10 )
+script = ExtResource( 6 )
 
 [node name="Tween" type="Tween" parent="ParallaxBackground2/ParallaxLayer/CloudLargeMovingSprite2"]
 repeat = true
 playback/repeat = true
 
 [node name="Sprite3" type="Sprite" parent="ParallaxBackground2/ParallaxLayer"]
+visible = false
 position = Vector2( -51.0225, 319.71 )
 scale = Vector2( 2.88094, 0.786147 )
-texture = ExtResource( 8 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 51, 48 )
 
 [node name="Sprite6" type="Sprite" parent="ParallaxBackground2/ParallaxLayer"]
+visible = false
 position = Vector2( 38.559, -76.356 )
 scale = Vector2( 2.88094, 0.786147 )
-texture = ExtResource( 8 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 50.5474, 47.9346 )
 
 [node name="Sprite2" type="Sprite" parent="ParallaxBackground2/ParallaxLayer"]
+visible = false
 position = Vector2( 10.7004, 128.708 )
 scale = Vector2( 1.78747, 0.902328 )
-texture = ExtResource( 8 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0.493011, 0.155401, 50.0544, 47.7792 )
 
-[node name="SpringboardPowerUp" parent="." instance=ExtResource( 11 )]
+[node name="SpringboardPowerUp" parent="." instance=ExtResource( 7 )]
 position = Vector2( 245.76, 351.896 )
 
-[node name="Platform" parent="." instance=ExtResource( 12 )]
+[node name="Platform" parent="." instance=ExtResource( 8 )]
 
-[node name="Platform9" parent="." instance=ExtResource( 12 )]
+[node name="Platform9" parent="." instance=ExtResource( 8 )]
 position = Vector2( 441.944, 652.634 )
 
-[node name="Platform6" parent="." instance=ExtResource( 12 )]
+[node name="Platform6" parent="." instance=ExtResource( 8 )]
 position = Vector2( 460.058, -93.8335 )
 
-[node name="Platform11" parent="." instance=ExtResource( 12 )]
+[node name="Platform11" parent="." instance=ExtResource( 8 )]
 position = Vector2( 295.971, -189.371 )
 
-[node name="Platform3" parent="." instance=ExtResource( 12 )]
+[node name="Platform3" parent="." instance=ExtResource( 8 )]
 position = Vector2( 276.229, 382.281 )
 
-[node name="Platform10" parent="." instance=ExtResource( 12 )]
+[node name="Platform10" parent="." instance=ExtResource( 8 )]
 position = Vector2( 149.242, -243.745 )
 
-[node name="Platform7" parent="." instance=ExtResource( 12 )]
+[node name="Platform7" parent="." instance=ExtResource( 8 )]
 position = Vector2( 470.58, 177.365 )
 
-[node name="Platform12" parent="." instance=ExtResource( 12 )]
+[node name="Platform12" parent="." instance=ExtResource( 8 )]
 position = Vector2( 284.446, -44.8936 )
 
-[node name="Platform2" parent="." instance=ExtResource( 12 )]
+[node name="Platform2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 75.7502, 479.248 )
 
-[node name="Platform13" parent="." instance=ExtResource( 12 )]
+[node name="Platform13" parent="." instance=ExtResource( 8 )]
 position = Vector2( 150.224, 34.8321 )
 
-[node name="Platform5" parent="." instance=ExtResource( 12 )]
+[node name="Platform5" parent="." instance=ExtResource( 8 )]
 position = Vector2( 104.538, 303.589 )
 
-[node name="Platform14" parent="." instance=ExtResource( 12 )]
+[node name="Platform14" parent="." instance=ExtResource( 8 )]
 position = Vector2( 407.782, 30.4908 )
 
-[node name="Platform4" parent="." instance=ExtResource( 12 )]
+[node name="Platform4" parent="." instance=ExtResource( 8 )]
 position = Vector2( 461.809, 314.254 )
 
-[node name="Platform15" parent="." instance=ExtResource( 12 )]
+[node name="Platform15" parent="." instance=ExtResource( 8 )]
 position = Vector2( 299.581, 139.968 )
 
-[node name="Platform8" parent="." instance=ExtResource( 12 )]
+[node name="Platform8" parent="." instance=ExtResource( 8 )]
 position = Vector2( 108.661, 157.5 )
 
-[node name="Platform16" parent="." instance=ExtResource( 12 )]
+[node name="Platform16" parent="." instance=ExtResource( 8 )]
 position = Vector2( 114.825, -102.612 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer"]
 margin_left = 8.0
 margin_top = 3.0
 margin_right = 221.0
 margin_bottom = 44.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 6 )
 text = "Score: "
-script = ExtResource( 14 )
+script = ExtResource( 10 )
 
 [node name="DoodleCamera" type="Camera2D" parent="."]
 position = Vector2( 275, 700 )
@@ -314,23 +217,23 @@ drag_margin_v_enabled = false
 drag_margin_bottom = 0.0
 editor_draw_limits = true
 editor_draw_drag_margin = true
-script = ExtResource( 15 )
+script = ExtResource( 11 )
 player_path = NodePath("../DoodleKinematicBody")
 
-[node name="MovingPlatform" parent="." instance=ExtResource( 16 )]
+[node name="MovingPlatform" parent="." instance=ExtResource( 12 )]
 position = Vector2( 443.079, 567.468 )
 
-[node name="BreakablePlatform" parent="." instance=ExtResource( 17 )]
+[node name="BreakablePlatform" parent="." instance=ExtResource( 13 )]
 position = Vector2( 411.095, 470.212 )
 
-[node name="Node2D" parent="." instance=ExtResource( 18 )]
+[node name="Node2D" parent="." instance=ExtResource( 14 )]
 position = Vector2( 35.7157, 228.67 )
 
 [node name="BackgroundMusicAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 19 )
+editor/display_folded = true
+stream = ExtResource( 15 )
 volume_db = -3.0
 autoplay = true
 bus = "BackgroundMusic"
 
 [node name="Tween" type="Tween" parent="BackgroundMusicAudio"]
-[connection signal="screen_exited" from="DoodleKinematicBody/VisibilityNotifier2D" to="DoodleKinematicBody" method="_on_screen_exited"]

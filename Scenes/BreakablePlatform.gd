@@ -3,7 +3,7 @@ extends KinematicBody2D
 func _on_Area2D_body_entered(body):
 	
 	#Se compara las posiciones del cuerpo que colisiona y de 
-	#la plataforma para ademas de saber si esta en el piso saber 
+	#la plataforma para, ademas de saber si esta en el piso, saber 
 	#que esta sobre esta plataforma
 	if body.is_on_floor() && body.position.y < global_position.y:
 		$AudioBreaking.play()

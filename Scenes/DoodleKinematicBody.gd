@@ -8,6 +8,7 @@ export(int) var FRICTION = 10.0
 var velocity = Vector2()
 
 func _process(delta):
+	var finalWalkSpeed = WALK_SPEED
 	
 	if is_on_floor():
 		if Input.is_action_just_pressed("ui_up"):
@@ -17,24 +18,24 @@ func _process(delta):
 		else:
 			velocity.y = 0.5
 	else:
+		finalWalkSpeed = WALK_SPEED / 1.5
 		velocity.y += delta * GRAVITY
-
+	
 	if Input.is_action_pressed("ui_left"):
-		velocity.x = -WALK_SPEED
+		velocity.x = -finalWalkSpeed
 	elif Input.is_action_pressed("ui_right"):
-		velocity.x = WALK_SPEED
+		velocity.x = finalWalkSpeed
 	else: # ¿Valdria la pena chequear si ya no es 0 x para no recalcular siempre?
 		velocity.x = max(0, abs(velocity.x)-FRICTION) * sign(velocity.x)
-		
+
 	Utils.checkLimit(self,get_viewport_rect())
-	
+
 func _physics_process(delta):
-	#Se asiga el vetor velocidad resultado del move and slide para 
-	#evitar que quede seteado algun valor extraño
 	move_and_slide(velocity, Vector2.UP)
 
 #Se llama cuando cae fuera de la camara(Aka sale de la pantalla)
 func _on_screen_exited():
+	#Se puede "mergear" en un solo sonido
 	$AudioFall.play()
 	yield(get_tree().create_timer(0.85), "timeout")
 	$AudioFallingHit.play()

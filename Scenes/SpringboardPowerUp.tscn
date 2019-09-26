@@ -59,5 +59,7 @@ one_way_collision = true
 stream = ExtResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -5.21541e-006, 52.6356 )
+scale = Vector2( 2.47453, 0.488672 )
 [connection signal="body_entered" from="Sprite/Area2D" to="." method="_on_player_jump"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_screen_exited"]
