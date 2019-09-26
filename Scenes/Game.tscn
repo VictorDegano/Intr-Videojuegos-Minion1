@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/DoodleKinematicBody.gd" type="Script" id=2]
@@ -23,19 +23,68 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.3137, 51.7599 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "Right Walk"
+[sub_resource type="Animation" id=4]
+resource_name = "Idle"
+loop = true
+step = 0.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("DoodleSprite:texture")
+tracks/0/path = NodePath("DoodleSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
+"times": PoolRealArray( 1.39698e-009, 0.0600804, 0.119243, 0.160979 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [  ]
+"values": [ 4, 5, 5, 4 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Jump"
+tracks/0/type = "value"
+tracks/0/path = NodePath("DoodleSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.00045863, 0.0412766, 0.10044, 0.141258 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 5, 6 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Left Walk"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("DoodleSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.000917256, 0.06, 0.11, 0.17 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 3, 3, 2 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Right Walk"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("DoodleSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0600804, 0.107778, 0.169693 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 1, 0 ]
 }
 
 [sub_resource type="DynamicFont" id=2]
@@ -84,6 +133,9 @@ pitch_scale = 2.0
 stream = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DoodleKinematicBody"]
+anims/Idle = SubResource( 4 )
+anims/Jump = SubResource( 5 )
+"anims/Left Walk" = SubResource( 6 )
 "anims/Right Walk" = SubResource( 3 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
