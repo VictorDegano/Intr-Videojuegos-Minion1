@@ -58,6 +58,7 @@ one_shot = true
 editor/display_folded = true
 
 [node name="BackgroundLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+editor/display_folded = true
 
 [node name="SkySprite" type="Sprite" parent="ParallaxBackground/BackgroundLayer"]
 position = Vector2( 275.379, 350.093 )

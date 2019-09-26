@@ -41,3 +41,7 @@ func _on_screen_exited():
 	yield(get_tree().create_timer(0.30), "timeout")
 	Event.emit_signal("game_over")
 	hide()
+
+func jumpBoost(boost:float):
+	velocity.y = -boost
+	Event.emit_signal("update_score", boost, position.y)
