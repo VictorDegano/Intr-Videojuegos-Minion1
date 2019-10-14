@@ -1,0 +1,131 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scenes/DoodleKinematicBody.gd" type="Script" id=1]
+[ext_resource path="res://assets/Spritesheets/Bunny Spritesheet.png" type="Texture" id=2]
+[ext_resource path="res://assets/Sounds/172205__leszek-szary__jumping.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/Sounds/Fall.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/Sounds/Cartoon Falling Impact 2.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/Sounds/SFX_Jump_18.wav" type="AudioStream" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 31.3137, 51.7599 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+loop = true
+step = 0.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("DoodleSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.39698e-009, 0.0600804, 0.119243, 0.160979 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 5, 4 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Jump"
+tracks/0/type = "value"
+tracks/0/path = NodePath("DoodleSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.00045863, 0.06, 0.1, 0.16 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 5, 6 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioJump")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 6 )
+} ],
+"times": PoolRealArray( 0.1 )
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Left Walk"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("DoodleSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.000917256, 0.06, 0.11, 0.17 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 3, 3, 2 ]
+}
+
+[sub_resource type="Animation" id=5]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("DoodleSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0600804, 0.107778, 0.169693 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 1, 0 ]
+}
+
+[node name="DoodleKinematicBody" type="KinematicBody2D"]
+position = Vector2( 74.9362, 574.209 )
+script = ExtResource( 1 )
+GRAVITY = 750
+JUMP_FORCE = 500
+WALK_SPEED = 250
+FRICTION = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+one_way_collision = true
+
+[node name="DoodleSprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 4
+frame = 4
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -31.3265, -51.7372 )
+scale = Vector2( 62.5823, 103.307 )
+rect = Rect2( 0, 0, 1, 1 )
+
+[node name="AudioJump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -20.0
+mix_target = 2
+
+[node name="AudioFall" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+pitch_scale = 2.0
+
+[node name="AudioFallingHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 2 )
+anims/Jump = SubResource( 3 )
+"anims/Left Walk" = SubResource( 4 )
+"anims/Right Walk" = SubResource( 5 )
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_screen_exited"]
